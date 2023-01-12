@@ -1,6 +1,6 @@
 - name: Stop Azure VM
-  hosts: localhost
-  connection: local
+#  hosts: localhost
+#  connection: local
   collections:
     - azure.azcollection
   tasks:
