@@ -9,3 +9,8 @@
         resource_group: "{{ resource_group }}"
         name: "{{ vm_name }}"
         restarted: yes
+      register: result
+
+    - copy:
+        content: "{{ result }}"
+        dest: "qtorque_outputs.json"
