@@ -1,0 +1,16 @@
+- name: Stop Azure VM
+  hosts: localhost
+  connection: local
+  collections:
+    - azure.azcollection
+  tasks:
+    - name: Stop virtual machine
+      azure_rm_virtualmachine:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ name }}"
+        started: no
+      register: result
+
+    - copy:
+        content: "{{ result }}"
+        dest: "qtorque_outputs.json"
