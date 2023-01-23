@@ -1,0 +1,12 @@
+- name: az login
+  hosts: localhost 
+  tasks:
+  - name: az federated login
+    ansible.builtin.shell: az login --service-principal -u $AZURE_CLIENT_ID -t $AZURE_TENANT_ID --federated-token $(cat $AZURE_FEDERATED_TOKEN_FILE)
+    args:
+      executable: /bin/bash
+    register: result
+
+  - name: print login result
+    debug:
+      msg: "{{ result }}"
