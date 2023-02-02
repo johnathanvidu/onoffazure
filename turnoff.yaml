@@ -9,7 +9,7 @@
   tasks:
     - name: Pause for 5 minutes to build app cache
       ansible.builtin.pause:
-      minutes: 5
+        minutes: 5
     - name: az federated login
       ansible.builtin.shell: az login --service-principal -u $AZURE_CLIENT_ID -t $AZURE_TENANT_ID --federated-token $(cat $AZURE_FEDERATED_TOKEN_FILE)
       when: federated_login.is_set is defined
